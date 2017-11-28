@@ -10,11 +10,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import java.util.HashSet;
+
 public class MainActivity extends AppCompatActivity {
 
     String jcolors;
     String text="";
     TextView textView;
+    HashSet<String> text2=new HashSet<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,8 +107,10 @@ public class MainActivity extends AppCompatActivity {
 
                 if (colorList[1].equals("255")){
                     count++;
-                    text+= (String)color.get("color")+"\n";}
+                    //text+= (String)color.get("color")+"\n";
 
+                text2.add(color.get("color")+"\n");
+                }
             }
             textView.setText("the number of colors is "+count);
         } catch (JSONException e) {
@@ -118,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     {
             count(view);
 
-            textView.setText("the wanted colors are\n"+ text);
+            textView.setText("the wanted colors are\n"+ text2.toString());
 
     }
 
